@@ -1,18 +1,15 @@
 import React from "react";
 import ReactDOM from "react-dom";
 import { BrowserRouter as Router, Route, Link } from "react-router-dom";
-import Home from "./Utils/Home";
-import Centered from "./Utils/Centred";
-import Palette from "./Utils/Palette";
-import WithProp from "./Utils/WithProp";
+import { Home, Palette, WithProp, Centred } from "./utils/";
 import "./style/index.scss";
 
-export default (Stories = []) => (
+export default ({ stories = [] }) => (
   <Router>
     <div className="main">
-      <Palette stories={Stories} />
+      <Palette stories={stories} />
       <Route exact path="/" component={Home} />
-      {Stories.map(({ name, component, props }, i) => {
+      {stories.map(({ name, component, props }, i) => {
         const Component = !!props ? WithProp(component)(props) : component;
         return <Route key={i} exact path={`/${name}`} component={Component} />;
       })}
@@ -20,4 +17,4 @@ export default (Stories = []) => (
   </Router>
 );
 
-export { Centered };
+export { Centred };
