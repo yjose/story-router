@@ -1,0 +1,109 @@
+.fuzzy-picker-background {
+  background: rgba(0, 0, 0, 0.2);
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  padding-top: 300px;
+  padding-top: 10vh;
+  z-index: 100; }
+  .fuzzy-picker-background .fuzzy-picker {
+    max-width: 600px;
+    min-width: 400px;
+    background: #252525;
+    color: #ddd;
+    border: 1px solid #252525;
+    box-shadow: 0px 0px 16px #333;
+    font-size: 12px;
+    display: flex;
+    flex-direction: column; }
+    .fuzzy-picker-background .fuzzy-picker .fuzzy-picker-top-text {
+      color: #aaa;
+      margin-top: 0.5em;
+      margin-left: 0.5rem;
+      margin-right: 0.5rem;
+      font-size: 0.8em;
+      user-select: none; }
+      .fuzzy-picker-background .fuzzy-picker .fuzzy-picker-top-text .fuzzy-picker-label {
+        float: left; }
+      .fuzzy-picker-background .fuzzy-picker .fuzzy-picker-top-text .fuzzy-picker-instructions {
+        float: right; }
+        .fuzzy-picker-background .fuzzy-picker .fuzzy-picker-top-text .fuzzy-picker-instructions span {
+          margin: 0.35em; }
+    .fuzzy-picker-background .fuzzy-picker input[type="text"] {
+      border: 1px solid #0195fe;
+      color: #ddd;
+      background: #252525;
+      outline: none;
+      flex: 1;
+      font-size: 1.4em;
+      padding: 0.2rem 0.5rem;
+      margin: 0.5rem 0.5rem; }
+    .fuzzy-picker-background .fuzzy-picker ul {
+      list-style-type: none;
+      padding-left: 0px;
+      margin-top: 0.2em;
+      margin-bottom: 0.5em; }
+      .fuzzy-picker-background .fuzzy-picker ul li {
+        margin: 0.1em 0rem;
+        padding: 0.6em 1em;
+        cursor: pointer; }
+        .fuzzy-picker-background .fuzzy-picker ul li.selected {
+          background-color: #3c3c3c;
+          color: #fff; }
+
+body {
+  margin: 0;
+  padding: 0; }
+
+.main {
+  margin: 0;
+  padding: 0; }
+
+.content {
+  display: flex;
+  flex-direction: row; }
+
+.centred {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  flex-flow: nowrap; }
+
+.props-editor {
+  position: sticky;
+  top: 0;
+  left: 0;
+  width: 300px;
+  height: 100%; }
+  .props-editor .CodeMirror {
+    height: calc(100% - 10px); }
+
+.json-valid {
+  width: 300px;
+  height: 10px;
+  background: gray;
+  display: flex;
+  flex-direction: row; }
+  .json-valid span {
+    display: block;
+    width: 0%;
+    height: 10px;
+    transition: width 100ms; }
+  .json-valid .s-valid {
+    background: #4ef74e; }
+  .json-valid .s-invalid {
+    background: #b33a3a; }
+  .json-valid.valid .s-valid {
+    width: 100%; }
+  .json-valid.valid .s-invalid {
+    width: 0%; }
+  .json-valid.invalid .s-valid {
+    width: 0%; }
+  .json-valid.invalid .s-invalid {
+    width: 100%; }

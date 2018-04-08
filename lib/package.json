@@ -1,0 +1,42 @@
+{
+  "name": "story-router",
+  "version": "0.0.1",
+  "description": "A simple Component that's take an array as prop and return a router component",
+  "main": "./index.es.js",
+  "module": "./index.es.js",
+  "dependencies": {
+    "codemirror": "^5.36.0",
+    "react": "^16.2.0",
+    "react-codemirror2": "^4.2.1",
+    "react-dom": "^16.2.0",
+    "react-fuzzy-picker": "^0.7.0",
+    "react-router": "^4.2.0",
+    "react-router-dom": "^4.2.2"
+  },
+  "peerDependencies": {
+    "codemirror": "^5.36.0",
+    "react": "^16.2.0",
+    "react-codemirror2": "^4.2.1",
+    "react-dom": "^16.2.0",
+    "react-fuzzy-picker": "^0.7.0",
+    "react-router": "^4.2.0",
+    "react-router-dom": "^4.2.2"
+  },
+  "files": [
+    "dist"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/yjose/story-router.git"
+  },
+  "keywords": [
+    "story",
+    "router"
+  ],
+  "author": "Youssouf Elazizi",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/yjose/story-router/issues"
+  },
+  "homepage": "https://github.com/yjose/story-router#readme"
+}
