@@ -53,13 +53,17 @@ promise = promise.then(() => {
   delete pkg.scripts;
 
   fs.writeFileSync(
-    "lib/package.json",
+    "./lib/package.json",
     JSON.stringify(pkg, null, "  "),
     "utf-8"
   );
-  fs.writeFileSync("lib/LICENSE", fs.readFileSync("LICENSE", "utf-8"), "utf-8");
   fs.writeFileSync(
-    "lib/README.md",
+    "./lib/LICENSE",
+    fs.readFileSync("LICENSE", "utf-8"),
+    "utf-8"
+  );
+  fs.writeFileSync(
+    "./lib/README.md",
     fs.readFileSync("README.md", "utf-8"),
     "utf-8"
   );
