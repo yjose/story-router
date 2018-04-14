@@ -1,6 +1,6 @@
 {
   "name": "story-router",
-  "version": "0.0.1",
+  "version": "1.0.0",
   "description":
     "A simple Component that's take an array as prop and return a router component",
   "main": "./story-router.cjs.js",
