@@ -8,16 +8,19 @@ const Bili = require("bili");
 const options = {
   input: "src/index.js",
   outDir: "lib",
-  name: "index",
-  format: ["es"],
-  postcss: { extract: true },
+  name: "story-router",
+  format: ["es", "cjs", "umd", "umd-min"],
   banner: true,
-  external: false
+  target: "browser",
+  external: [
+    ...Object.keys(pkg.peerDependencies),
+    ...Object.keys(pkg.dependencies)
+  ]
 };
 
 // some confuse between babel config for parcel that use v6 and Bili that's use V7
 const babelBiliConfig = {
-  presets: ["@babel/preset-react"],
+  presets: [["@babel/preset-env", { modules: false }], "@babel/preset-react"],
   plugins: ["@babel/plugin-proposal-class-properties"]
 };
 const babelParcelConfig = {
@@ -25,30 +28,8 @@ const babelParcelConfig = {
   plugins: ["transform-class-properties"]
 };
 
-let promise = Promise.resolve();
-
-// and use babel config V7
-// Clean up the output directory
-
-promise = promise.then(() => {
-  fs.writeFileSync(
-    "./.babelrc",
-    JSON.stringify(babelBiliConfig, null, "  "),
-    "utf-8"
-  );
-  del(["lib/*"]);
-});
-
-// Copy package.json and LICENSE
-promise = promise.then(() => {
-  Bili.write(options).then(() => {
-    console.log("Done!");
-    fs.writeFileSync(
-      "./.babelrc",
-      JSON.stringify(babelParcelConfig, null, "  "),
-      "utf-8"
-    );
-  });
+// Copy package.json, LICENSE,README and npmignore files
+const writePackageFiles = () => {
   delete pkg.devDependencies;
   delete pkg.scripts;
 
@@ -67,6 +48,32 @@ promise = promise.then(() => {
     fs.readFileSync("README.md", "utf-8"),
     "utf-8"
   );
-});
+};
 
-promise.catch(err => console.error(err.stack)); // eslint-disable-line no-console
+// and use babel config V7
+// Clean up the output directory
+const Build = () => {
+  console.log("Delete old build Folder ....");
+  del(["lib/*"]).then(() => {
+    fs.writeFileSync(
+      "./.babelrc",
+      JSON.stringify(babelBiliConfig, null, "  "),
+      "utf-8"
+    );
+    Bili.write(options).then(() => {
+      fs.writeFileSync(
+        "./.babelrc",
+        JSON.stringify(babelParcelConfig, null, "  "),
+        "utf-8"
+      );
+    });
+
+    writePackageFiles();
+  });
+};
+
+let promise = Promise.resolve();
+promise = promise.then(Build);
+
+// catch errors
+promise.catch(err => console.error(err.stack));
