@@ -13,8 +13,8 @@ const options = {
   banner: true,
   target: "browser",
   external: [
-    ...Object.keys(pkg.peerDependencies),
-    ...Object.keys(pkg.dependencies)
+    ...Object.keys(pkg.peerDependencies)
+    //...Object.keys(pkg.dependencies)
   ]
 };
 
