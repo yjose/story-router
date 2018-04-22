@@ -2,7 +2,7 @@ import React from "react";
 
 import { withRouter } from "react-router";
 
-import { FuzzyPicker, FuzzyWrapper } from "react-fuzzy-picker";
+import { FuzzyPicker, FuzzyWrapper } from "./fuzzy-picker/index";
 
 const Palette = props => (
   <FuzzyWrapper
